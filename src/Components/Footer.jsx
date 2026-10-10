@@ -14,7 +14,6 @@ export default function Footer() {
     linkedin: import.meta.env.VITE_APP_LINKEDIN,
     youtube: import.meta.env.VITE_APP_YOUTUBE,
   })
-  console.log(settingData)
   return (
     <footer id="foot">
       <div className="container">
