@@ -1,10 +1,17 @@
 import React, { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 
 export default function Navbar() {
   let [settingData, setSettingData] = useState({
     siteName: import.meta.env.VITE_APP_SITE_NAME
   })
+
+  let navigate = useNavigate()
+
+  function logout() {
+    localStorage.clear()
+    navigate("/login")
+  }
   return (
     <>
       <nav id="nbar">
@@ -25,19 +32,16 @@ export default function Navbar() {
               <NavLink to="/contactus" className="nav-link">Contact Us</NavLink>
             </div>
             <div className="d-flex align-items-center gap-2">
-              <button className="boc d-flex align-items-center justify-content-center inline-style-002" id="thbtn"
-                aria-label="Toggle theme">
-                <i className="fa-solid fa-sun inline-style-003" id="suni"></i>
-                <i className="fa-solid fa-moon" id="mooni"></i>
-              </button>
-              <button className="boc px-3 py-2 d-none d-sm-flex align-items-center gap-1"
-                data-bs-toggle="offcanvas" data-bs-target="#lofc" onclick="swTab('login')">
-                <i className="fa-regular fa-user fa-sm"></i> Log in
-              </button>
-              <button className="bgrd btn px-3 py-2 d-none d-sm-flex align-items-center gap-1"
-                data-bs-toggle="offcanvas" data-bs-target="#lofc" onclick="swTab('signup')">
-                Get Started <i className="fa-solid fa-arrow-right fa-sm"></i>
-              </button>
+              {localStorage.getItem("login") ?
+                <>
+                  <Link to="/profile" className="bgrd btn px-3 py-2 d-none d-sm-flex align-items-center gap-1">Profile</Link>
+                  {localStorage.getItem("role") === "User" ? null : <Link to="/admin" className="bgrd btn px-3 py-2 d-none d-sm-flex align-items-center gap-1">Dashboard</Link>}
+                  <button className="bgrd btn px-3 py-2 d-none d-sm-flex align-items-center gap-1" onClick={logout}>Logout</button>
+                </>
+                : <Link to="/login" className="boc px-3 py-2 d-none d-sm-flex align-items-center gap-1">
+                  <i className="fa-regular fa-user fa-sm"></i> Log in
+                </Link>
+              }
               <button className="boc d-lg-none px-2 py-2 inline-style-004" id="mbtog">
                 <i className="fa-solid fa-bars" id="barIcon"></i>
                 <i className="fa-solid fa-xmark inline-style-003" id="xIcon"></i>

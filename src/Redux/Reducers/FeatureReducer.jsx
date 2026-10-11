@@ -10,12 +10,12 @@ export default function FeatureReducer(state = [], action) {
             return action.payload
 
         case UPDATE_FEATURE_RED:
-            index = state.findIndex(x => x.id === action.payload.id)
+            index = state.findIndex(x => x._id === action.payload._id)
             state[index] = { ...action.payload }
             return state
 
         case DELETE_FEATURE_RED:
-            return state.filter(x => x.id !== action.payload.id)
+            return state.filter(x => x._id !== action.payload._id)
 
         default:
             return state

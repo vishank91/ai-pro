@@ -16,7 +16,7 @@ export default function AdminUserCreatePage() {
         email: '',
         password: '',
         cpassword: '',
-        role:"Admin"
+        role: "Admin"
     })
     let [errorMessage, setErrorMessage] = useState({
         name: "Full Name Field is Mendatory",
@@ -81,80 +81,81 @@ export default function AdminUserCreatePage() {
     }, [UserStateData.length])
     return (
         <>
-
-            <div className="container-fluid my-3">
-                <div className="row">
-                    <div className="col-md-3">
-                        <AdminSidebar />
-                    </div>
-                    <div className="col-md-9">
-                        <h5 className='bg-primary text-light text-center p-2'>Create User <Link to="/admin/user"><i className='bi bi-arrow-left text-light float-end'></i></Link></h5>
-                        <form onSubmit={postData}>
-                            <div className="row">
-                                <div className="col-lg-6 mb-3">
-                                    <label>Full Name*</label>
-                                    <input type="text" name="name" onChange={getInputData} placeholder='Full Name' className={`form-control ${show && errorMessage.name ? 'border-danger' : 'border-primary'}`} />
-                                    {show && errorMessage.name ? <p className='text-danger'>{errorMessage.name}</p> : null}
-                                </div>
-
-                                <div className="col-lg-6 mb-3">
-                                    <label>Phone Number*</label>
-                                    <input type="text" name="phone" onChange={getInputData} placeholder='Phone Number' className={`form-control ${show && errorMessage.phone ? 'border-danger' : 'border-primary'}`} />
-                                    {show && errorMessage.phone ? <p className='text-danger'>{errorMessage.phone}</p> : null}
-                                </div>
-
-                                <div className="col-lg-6 mb-3">
-                                    <label>Username*</label>
-                                    <input type="text" name="username" onChange={getInputData} placeholder='Username' className={`form-control ${show && errorMessage.username ? 'border-danger' : 'border-primary'}`} />
-                                    {show && errorMessage.username ? <p className='text-danger'>{errorMessage.username}</p> : null}
-                                </div>
-
-                                <div className="col-lg-6 mb-3">
-                                    <label>Email Address*</label>
-                                    <input type="email" name="email" onChange={getInputData} placeholder='Email Address' className={`form-control ${show && errorMessage.email ? 'border-danger' : 'border-primary'}`} />
-                                    {show && errorMessage.email ? <p className='text-danger'>{errorMessage.email}</p> : null}
-                                </div>
-
-                                <div className="col-lg-6 mb-3">
-                                    <label className='d-block'>Password*</label>
-                                    <div className='btn-group w-100'>
-                                        <input type="password" name="password" onChange={getInputData} placeholder='Password' className={`form-control rounded-0 rounded-start ${show && errorMessage.password ? 'border-danger' : 'border-primary'}`} />
+            <section id="pricing" className="sp position-relative inline-style-054">
+                <div className="container-fluid my-3">
+                    <div className="row">
+                        <div className="col-md-3">
+                            <AdminSidebar />
+                        </div>
+                        <div className="col-md-9">
+                            <h5 className='bg-primary text-light text-center p-2'>Create User <Link to="/admin/user"><i className='bi bi-arrow-left text-light float-end'></i></Link></h5>
+                            <form onSubmit={postData}>
+                                <div className="row">
+                                    <div className="col-lg-6 mb-3">
+                                        <label>Full Name*</label>
+                                        <input type="text" name="name" onChange={getInputData} placeholder='Full Name' className={`oinp ${show && errorMessage.name ? 'border-danger' : 'border-primary'}`} />
+                                        {show && errorMessage.name ? <p className='text-danger'>{errorMessage.name}</p> : null}
                                     </div>
-                                    {show && errorMessage.password ? errorMessage.password?.split("|").map((item, index) => {
-                                        return <p className='text-danger' key={index}>{item}</p>
-                                    }) : null}
-                                </div>
 
-                                <div className="col-lg-6 mb-3">
-                                    <label>Confirm Password*</label>
-                                    <input type="password" name="cpassword" onChange={getInputData} placeholder='Confirm Password' className={`form-control ${show && errorMessage.password ? 'border-danger' : 'border-primary'}`} />
-                                </div>
+                                    <div className="col-lg-6 mb-3">
+                                        <label>Phone Number*</label>
+                                        <input type="text" name="phone" onChange={getInputData} placeholder='Phone Number' className={`oinp ${show && errorMessage.phone ? 'border-danger' : 'border-primary'}`} />
+                                        {show && errorMessage.phone ? <p className='text-danger'>{errorMessage.phone}</p> : null}
+                                    </div>
 
-                                <div className="col-md-6 mb-3">
-                                    <label>Role</label>
-                                    <select name="role" onChange={getInputData} className='form-select border-primary'>
-                                        <option value="Admin">Admin</option>
-                                        <option value="Super Admin">Super Admin</option>
-                                    </select>
-                                </div>
+                                    <div className="col-lg-6 mb-3">
+                                        <label>Username*</label>
+                                        <input type="text" name="username" onChange={getInputData} placeholder='Username' className={`oinp ${show && errorMessage.username ? 'border-danger' : 'border-primary'}`} />
+                                        {show && errorMessage.username ? <p className='text-danger'>{errorMessage.username}</p> : null}
+                                    </div>
 
-                                <div className="col-md-6 mb-3">
-                                    <label>Status</label>
-                                    <select name="status" onChange={getInputData} className='form-select border-primary'>
-                                        <option value="1">Active</option>
-                                        <option value="0">Inactive</option>
-                                    </select>
-                                </div>
+                                    <div className="col-lg-6 mb-3">
+                                        <label>Email Address*</label>
+                                        <input type="email" name="email" onChange={getInputData} placeholder='Email Address' className={`oinp ${show && errorMessage.email ? 'border-danger' : 'border-primary'}`} />
+                                        {show && errorMessage.email ? <p className='text-danger'>{errorMessage.email}</p> : null}
+                                    </div>
 
-                                <div className="col-12 mb-3">
-                                    <button type='submit' className='btn btn-primary w-100'>Create</button>
-                                </div>
+                                    <div className="col-lg-6 mb-3">
+                                        <label className='d-block'>Password*</label>
+                                        <div className='btn-group w-100'>
+                                            <input type="password" name="password" onChange={getInputData} placeholder='Password' className={`oinp rounded-0 rounded-start ${show && errorMessage.password ? 'border-danger' : 'border-primary'}`} />
+                                        </div>
+                                        {show && errorMessage.password ? errorMessage.password?.split("|").map((item, index) => {
+                                            return <p className='text-danger' key={index}>{item}</p>
+                                        }) : null}
+                                    </div>
 
-                            </div>
-                        </form>
+                                    <div className="col-lg-6 mb-3">
+                                        <label>Confirm Password*</label>
+                                        <input type="password" name="cpassword" onChange={getInputData} placeholder='Confirm Password' className={`oinp ${show && errorMessage.password ? 'border-danger' : 'border-primary'}`} />
+                                    </div>
+
+                                    <div className="col-md-6 mb-3">
+                                        <label>Role</label>
+                                        <select name="role" onChange={getInputData} className='oinp border-primary'>
+                                            <option value="Admin">Admin</option>
+                                            <option value="Super Admin">Super Admin</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="col-md-6 mb-3">
+                                        <label>Status</label>
+                                        <select name="status" onChange={getInputData} className='oinp border-primary'>
+                                            <option value="1">Active</option>
+                                            <option value="0">Inactive</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="col-12 mb-3">
+                                        <button type='submit' className='btn btn-primary w-100'>Create</button>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </>
     )
 }

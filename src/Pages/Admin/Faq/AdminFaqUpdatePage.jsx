@@ -8,7 +8,7 @@ import TextValidators from '../../../FormValidators/TextValidators'
 
 import { updateFaq, getFaq } from '../../../Redux/ActionCreators/FaqActionCreators'
 export default function AdminFaqUpdatePage() {
-    let { id } = useParams()
+    let { _id } = useParams()
 
     let [data, setData] = useState({
         question: "",
@@ -37,7 +37,7 @@ export default function AdminFaqUpdatePage() {
         if (error)
             setShow(true)
         else {
-            let item = FaqStateData.find(x => x.id !== id && x.question?.toLocaleLowerCase() === data.question?.toLocaleLowerCase())
+            let item = FaqStateData.find(x => x._id !== _id && x.question?.toLocaleLowerCase() === data.question?.toLocaleLowerCase())
             if (item) {
                 setErrorMessage({ ...errorMessage, name: 'Faq With This Question Already Exist' })
                 setShow(true)
@@ -52,7 +52,7 @@ export default function AdminFaqUpdatePage() {
         (() => {
             dispatch(getFaq())
             if (FaqStateData.length) {
-                let item = FaqStateData.find(x => x.id === id)
+                let item = FaqStateData.find(x => x._id === _id)
                 if (item)
                     setData({ ...data, ...item })
                 else
@@ -62,45 +62,46 @@ export default function AdminFaqUpdatePage() {
     }, [FaqStateData.length])
     return (
         <>
+            <section id="pricing" className="sp position-relative inline-style-054">
+                <div className="container-fluid my-3">
+                    <div className="row">
+                        <div className="col-md-3">
+                            <AdminSidebar />
+                        </div>
+                        <div className="col-md-9">
+                            <h5 className='bg-primary text-light text-center p-2'>Update Faq <Link to="/admin/faq"><i className='bi bi-arrow-left text-light float-end'></i></Link></h5>
+                            <form onSubmit={postData}>
+                                <div className="row">
+                                    <div className="col-12 mb-3">
+                                        <label>Question*</label>
+                                        <input type="text" name="question" value={data.question} onChange={getInputData} placeholder='Question' className={`oinp ${show && errorMessage.question ? 'border-danger' : 'border-primary'}`} />
+                                        {show && errorMessage.question ? <p className='text-danger text-capitalize'>{errorMessage.question}</p> : null}
+                                    </div>
 
-            <div className="container-fluid my-3">
-                <div className="row">
-                    <div className="col-md-3">
-                        <AdminSidebar />
-                    </div>
-                    <div className="col-md-9">
-                        <h5 className='bg-primary text-light text-center p-2'>Update Faq <Link to="/admin/faq"><i className='bi bi-arrow-left text-light float-end'></i></Link></h5>
-                        <form onSubmit={postData}>
-                            <div className="row">
-                                <div className="col-12 mb-3">
-                                    <label>Question*</label>
-                                    <input type="text" name="question" value={data.question} onChange={getInputData} placeholder='Question' className={`form-control ${show && errorMessage.question ? 'border-danger' : 'border-primary'}`} />
-                                    {show && errorMessage.question ? <p className='text-danger text-capitalize'>{errorMessage.question}</p> : null}
+                                    <div className="col-12 mb-3">
+                                        <label>Answer*</label>
+                                        <textarea name="answer" rows={3} value={data.answer} onChange={getInputData} placeholder='Faq Name' className={`oinp ${show && errorMessage.answer ? 'border-danger' : 'border-primary'}`} />
+                                        {show && errorMessage.answer ? <p className='text-danger text-capitalize'>{errorMessage.answer}</p> : null}
+                                    </div>
+
+                                    <div className="col-md-6 mb-3">
+                                        <label>Status</label>
+                                        <select name="status" value={data.status ? "1" : "0"} onChange={getInputData} className='oinp border-primary'>
+                                            <option value="1">Active</option>
+                                            <option value="0">Inactive</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="col-12 mb-3">
+                                        <button type='submit' className='btn btn-primary w-100'>Update</button>
+                                    </div>
+
                                 </div>
-
-                                <div className="col-12 mb-3">
-                                    <label>Answer*</label>
-                                    <textarea name="answer" rows={3} value={data.answer} onChange={getInputData} placeholder='Faq Name' className={`form-control ${show && errorMessage.answer ? 'border-danger' : 'border-primary'}`} />
-                                    {show && errorMessage.answer ? <p className='text-danger text-capitalize'>{errorMessage.answer}</p> : null}
-                                </div>
-
-                                <div className="col-md-6 mb-3">
-                                    <label>Status</label>
-                                    <select name="status" value={data.status ? "1" : "0"} onChange={getInputData} className='form-select border-primary'>
-                                        <option value="1">Active</option>
-                                        <option value="0">Inactive</option>
-                                    </select>
-                                </div>
-
-                                <div className="col-12 mb-3">
-                                    <button type='submit' className='btn btn-primary w-100'>Update</button>
-                                </div>
-
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </>
     )
 }

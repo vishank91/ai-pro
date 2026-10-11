@@ -6,7 +6,7 @@ import AdminSidebar from '../../../Components/Admin/AdminSidebar'
 
 import { getContactUs, deleteContactUs, updateContactUs } from "../../../Redux/ActionCreators/ContactUsActionCreators"
 export default function AdminContactUsShowPage() {
-    let { id } = useParams()
+    let { _id } = useParams()
     let [data, setData] = useState({})
     let [flag, setFlag] = useState(true)
 
@@ -25,7 +25,7 @@ export default function AdminContactUsShowPage() {
 
     function deleteRecord() {
         if (window.confirm("Are You Sure to Delete That Record")) {
-            dispatch(deleteContactUs({ id: id }))
+            dispatch(deleteContactUs({ _id: _id }))
             navigate("/admin/contact")
         }
     }
@@ -34,7 +34,7 @@ export default function AdminContactUsShowPage() {
         (() => {
             dispatch(getContactUs())
             if (ContactUsStateData.length) {
-                let item = ContactUsStateData.find(x => x.id === id)
+                let item = ContactUsStateData.find(x => x._id === _id)
                 if (item)
                     setData(item)
                 else
@@ -55,7 +55,7 @@ export default function AdminContactUsShowPage() {
                             <Link to="/admin/contact"><i className='bi bi-arrow-left float-end text-light'></i></Link>
                         </h5>
                         <div className="table-responsive">
-                            <table className='table table-bordered'>
+                            <table className='table table-bordered table-dark'>
                                 <tbody>
                                     <tr>
                                         <th>Id</th>

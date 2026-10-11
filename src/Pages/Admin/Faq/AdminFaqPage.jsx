@@ -15,10 +15,10 @@ export default function AdminFaqPage() {
     let FaqStateData = useSelector(state => state.FaqStateData)
     let dispatch = useDispatch()
 
-    function deleteRecord(id) {
+    function deleteRecord(_id) {
         if (window.confirm("Are You Sure to Delete That Record")) {
-            dispatch(deleteFaq({ id: id }))
-            setData(data.filter(x => x.id !== id))
+            dispatch(deleteFaq({ _id: _id }))
+            setData(data.filter(x => x._id !== _id))
         }
     }
 
@@ -34,43 +34,44 @@ export default function AdminFaqPage() {
     }, [FaqStateData.length])
     return (
         <>
-
-            <div className="container-fluid my-3">
-                <div className="row">
-                    <div className="col-md-3">
-                        <AdminSidebar />
-                    </div>
-                    <div className="col-md-9">
-                        <h5 className='bg-primary text-light text-center p-2'>Faq <Link to="/admin/faq/create"><i className='bi bi-plus text-light float-end'></i></Link></h5>
-                        <div className="table-responsive">
-                            <table id='myTable' className='table table-bordered text-dark'>
-                                <thead>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Question</th>
-                                        <th>Answer</th>
-                                        <th>Status</th>
-                                        <th></th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {data.map(item => {
-                                        return <tr key={item.id}>
-                                            <td>{item.id}</td>
-                                            <td>{item.question}</td>
-                                            <td>{item.answer}</td>
-                                            <td>{item.status ? "Active" : "Inactive"}</td>
-                                            <td><Link to={`/admin/faq/update/${item.id}`} className='btn btn-primary'><i className='bi bi-pencil-square'></i></Link></td>
-                                            <td><button className='btn btn-danger' onClick={() => deleteRecord(item.id)}><i className='bi bi-x'></i></button></td>
+            <section id="pricing" className="sp position-relative inline-style-054">
+                <div className="container-fluid my-3">
+                    <div className="row">
+                        <div className="col-md-3">
+                            <AdminSidebar />
+                        </div>
+                        <div className="col-md-9">
+                            <h5 className='bg-primary text-light text-center p-2'>Faq <Link to="/admin/faq/create"><i className='bi bi-plus text-light float-end'></i></Link></h5>
+                            <div className="table-responsive">
+                                <table id='myTable' className='table table-bordered table-dark text-dark'>
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Question</th>
+                                            <th>Answer</th>
+                                            <th>Status</th>
+                                            <th></th>
+                                            <th></th>
                                         </tr>
-                                    })}
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        {data.map(item => {
+                                            return <tr key={item._id}>
+                                                <td>{item._id}</td>
+                                                <td>{item.question}</td>
+                                                <td>{item.answer}</td>
+                                                <td>{item.status ? "Active" : "Inactive"}</td>
+                                                <td><Link to={`/admin/faq/update/${item._id}`} className='btn btn-primary'><i className='bi bi-pencil-square'></i></Link></td>
+                                                <td><button className='btn btn-danger' onClick={() => deleteRecord(item._id)}><i className='bi bi-x'></i></button></td>
+                                            </tr>
+                                        })}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </>
     )
 }

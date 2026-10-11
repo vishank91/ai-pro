@@ -17,7 +17,7 @@ export default function AdminContactUsPage() {
 
     function updateRecord(id) {
         if (window.confirm("Are You Sure to Status Of That Record")) {
-            let index = data.findIndex(x => x.id === id)
+            let index = data.findIndex(x => x._id === _id)
             data[index].status = !data[index].status
             dispatch(updateContactUs({ ...data[index] }))
             setData(data)
@@ -25,10 +25,10 @@ export default function AdminContactUsPage() {
         }
     }
 
-    function deleteRecord(id) {
+    function deleteRecord(_id) {
         if (window.confirm("Are You Sure to Delete That Record")) {
-            dispatch(deleteContactUs({ id: id }))
-            setData(data.filter(x => x.id !== id))
+            dispatch(deleteContactUs({ _id: _id }))
+            setData(data.filter(x => x._id !== _id))
         }
     }
 
@@ -52,7 +52,7 @@ export default function AdminContactUsPage() {
                     <div className="col-md-9">
                         <h5 className='bg-primary text-light text-center p-2'>ContactUs</h5>
                         <div className="table-responsive">
-                            <table id='myTable' className='table table-bordered text-dark'>
+                            <table id='myTable' className='table table-bordered table-dark text-dark'>
                                 <thead>
                                     <tr>
                                         <th>Id</th>
@@ -68,16 +68,16 @@ export default function AdminContactUsPage() {
                                 </thead>
                                 <tbody>
                                     {data.map(item => {
-                                        return <tr key={item.id}>
-                                            <td>{item.id}</td>
+                                        return <tr key={item._id}>
+                                            <td>{item._id}</td>
                                             <td>{item.name}</td>
                                             <td>{item.phone}</td>
                                             <td>{item.email}</td>
                                             <td>{item.subject}</td>
                                             <td>{new Date(item.date).toLocaleDateString()}</td>
-                                            <td onClick={() => updateRecord(item.id)} style={{ cursor: "pointer" }}>{item.status ? "Active" : "Inactive"}</td>
-                                            <td><Link to={`/admin/contact/show/${item.id}`} className='btn btn-primary'><i className='bi bi-eye'></i></Link></td>
-                                            <td>{item.status?null:<button className='btn btn-danger' onClick={() => deleteRecord(item.id)}><i className='bi bi-x'></i></button>}</td>
+                                            <td onClick={() => updateRecord(item._id)} style={{ cursor: "pointer" }}>{item.status ? "Active" : "Inactive"}</td>
+                                            <td><Link to={`/admin/contact/show/${item._id}`} className='btn btn-primary'><i className='bi bi-eye'></i></Link></td>
+                                            <td>{item.status ? null : <button className='btn btn-danger' onClick={() => deleteRecord(item._id)}><i className='bi bi-x'></i></button>}</td>
                                         </tr>
                                     })}
                                 </tbody>

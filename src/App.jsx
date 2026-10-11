@@ -34,6 +34,8 @@ import AdminUserPage from './Pages/Admin/User/AdminUserPage'
 import AdminUserCreatePage from './Pages/Admin/User/AdminUserCreatePage'
 import AdminUserUpdatePage from './Pages/Admin/User/AdminUserUpdatePage'
 import SignupPage from './Pages/User/SignupPage'
+import LoginPage from './Pages/User/LoginPage'
+import ProfilePage from './Pages/User/ProfilePage'
 
 
 export default function App() {
@@ -52,8 +54,10 @@ export default function App() {
         <Route path='/contactus' element={<ContactUsPage />} />
 
         <Route path='/signup' element={<SignupPage />} />
+        <Route path='/login' element={<LoginPage />} />
 
         {/* User Routes */}
+        <Route path='/profile' element={<ProfilePage />} />
 
 
         {/* Admin Routes */}
@@ -61,22 +65,22 @@ export default function App() {
 
         <Route path='/admin/feature' element={<AdminFeaturePage />} />
         <Route path='/admin/feature/create' element={<AdminFeatureCreatePage />} />
-        <Route path='/admin/feature/update/:id' element={<AdminFeatureUpdatePage />} />
+        <Route path='/admin/feature/update/:_id' element={<AdminFeatureUpdatePage />} />
 
         <Route path='/admin/faq' element={<AdminFaqPage />} />
         <Route path='/admin/faq/create' element={<AdminFaqCreatePage />} />
-        <Route path='/admin/faq/update/:id' element={<AdminFaqUpdatePage />} />
+        <Route path='/admin/faq/update/:_id' element={<AdminFaqUpdatePage />} />
 
         <Route path='/admin/setting' element={<AdminSettingPage />} />
 
         <Route path='/admin/newsletter' element={<AdminNewsletterPage />} />
 
         <Route path='/admin/contact' element={<AdminContactUsPage />} />
-        <Route path='/admin/contact/show/:id' element={<AdminContactUsShowPage />} />
+        <Route path='/admin/contact/show/:_id' element={<AdminContactUsShowPage />} />
 
         <Route path='/admin/user' element={<AdminUserPage />} />
         <Route path='/admin/user/create' element={<AdminUserCreatePage />} />
-        <Route path='/admin/user/update/:id' element={<AdminUserUpdatePage />} />
+        <Route path='/admin/user/update/:_id' element={<AdminUserUpdatePage />} />
 
 
         <Route path='/*' element={<ErrorPage />} />

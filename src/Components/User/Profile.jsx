@@ -10,19 +10,20 @@ export default function Profile() {
             let response = await fetch(`${import.meta.env.VITE_APP_BACKEND_SERVER}/user/${localStorage.getItem("userid")}`, {
                 method: "GET",
                 headers: {
-                    "content-type": "application/json"
+                    "content-type": "application/json",
+                    "authorization": localStorage.getItem("token")
                 }
             })
             response = await response.json()
-            if (response)
-                setData(response)
+            if (response.result==="Done")
+                setData(response.data)
             else
                 navigate("/login")
         })()
     }, [])
     return (
         <>
-            <table className='table table-bordered text-dark'>
+            <table className='table table-bordered table-dark text-dark'>
                 <tbody>
                     <tr>
                         <th>Name</th>

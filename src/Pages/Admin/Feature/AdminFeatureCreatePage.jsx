@@ -54,51 +54,52 @@ export default function AdminFeatureCreatePage() {
     }, [FeatureStateData.length])
     return (
         <>
+            <section id="pricing" className="sp position-relative inline-style-054">
+                <div className="container-fluid my-3">
+                    <div className="row">
+                        <div className="col-md-3">
+                            <AdminSidebar />
+                        </div>
+                        <div className="col-md-9">
+                            <h5 className='bg-primary text-light text-center p-2'>Create Feature <Link to="/admin/feature"><i className='bi bi-arrow-left text-light float-end'></i></Link></h5>
+                            <form onSubmit={postData}>
+                                <div className="row">
+                                    <div className="col-12 mb-3">
+                                        <label>Name*</label>
+                                        <input type="text" name="name" onChange={getInputData} placeholder='Feature Name' className={`oinp ${show && errorMessage.name ? 'border-danger' : 'border-primary'}`} />
+                                        {show && errorMessage.name ? <p className='text-danger text-capitalize'>{errorMessage.name}</p> : null}
+                                    </div>
 
-            <div className="container-fluid my-3">
-                <div className="row">
-                    <div className="col-md-3">
-                        <AdminSidebar />
-                    </div>
-                    <div className="col-md-9">
-                        <h5 className='bg-primary text-light text-center p-2'>Create Feature <Link to="/admin/feature"><i className='bi bi-arrow-left text-light float-end'></i></Link></h5>
-                        <form onSubmit={postData}>
-                            <div className="row">
-                                <div className="col-12 mb-3">
-                                    <label>Name*</label>
-                                    <input type="text" name="name" onChange={getInputData} placeholder='Feature Name' className={`form-control ${show && errorMessage.name ? 'border-danger' : 'border-primary'}`} />
-                                    {show && errorMessage.name ? <p className='text-danger text-capitalize'>{errorMessage.name}</p> : null}
+                                    <div className="col-12 mb-3">
+                                        <label>Short Description*</label>
+                                        <textarea name="shortDescription" rows={3} onChange={getInputData} placeholder='Feature Name' className={`oinp ${show && errorMessage.shortDescription ? 'border-danger' : 'border-primary'}`} />
+                                        {show && errorMessage.shortDescription ? <p className='text-danger text-capitalize'>{errorMessage.shortDescription}</p> : null}
+                                    </div>
+
+                                    <div className="col-md-6 mb-3">
+                                        <label>Icon*</label>
+                                        <input type="text" name="icon" onChange={getInputData} className={`oinp ${show && errorMessage.icon ? 'border-danger' : 'border-primary'}`} placeholder="Bootstrap Icon Tag like <i class='bi bi-list'></i>" />
+                                        {show && errorMessage.icon ? <p className='text-danger text-capitalize'>{errorMessage.icon}</p> : null}
+                                    </div>
+
+                                    <div className="col-md-6 mb-3">
+                                        <label>Status</label>
+                                        <select name="status" onChange={getInputData} className='oinp border-primary'>
+                                            <option value="1">Active</option>
+                                            <option value="0">Inactive</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="col-12 mb-3">
+                                        <button type='submit' className='btn btn-primary w-100'>Create</button>
+                                    </div>
+
                                 </div>
-
-                                <div className="col-12 mb-3">
-                                    <label>Short Description*</label>
-                                    <textarea name="shortDescription" rows={3} onChange={getInputData} placeholder='Feature Name' className={`form-control ${show && errorMessage.shortDescription ? 'border-danger' : 'border-primary'}`} />
-                                    {show && errorMessage.shortDescription ? <p className='text-danger text-capitalize'>{errorMessage.shortDescription}</p> : null}
-                                </div>
-
-                                <div className="col-md-6 mb-3">
-                                    <label>Icon*</label>
-                                    <input type="text" name="icon" onChange={getInputData} className={`form-control ${show && errorMessage.icon ? 'border-danger' : 'border-primary'}`} placeholder="Bootstrap Icon Tag like <i class='bi bi-list'></i>" />
-                                    {show && errorMessage.icon ? <p className='text-danger text-capitalize'>{errorMessage.icon}</p> : null}
-                                </div>
-
-                                <div className="col-md-6 mb-3">
-                                    <label>Status</label>
-                                    <select name="status" onChange={getInputData} className='form-select border-primary'>
-                                        <option value="1">Active</option>
-                                        <option value="0">Inactive</option>
-                                    </select>
-                                </div>
-
-                                <div className="col-12 mb-3">
-                                    <button type='submit' className='btn btn-primary w-100'>Create</button>
-                                </div>
-
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </>
     )
 }

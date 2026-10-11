@@ -5,18 +5,19 @@ import Profile from '../../Components/User/Profile'
 export default function AdminHomePage() {
     return (
         <>
-
-            <div className="container-fluid my-3">
-                <div className="row">
-                    <div className="col-md-3">
-                        <AdminSidebar />
-                    </div>
-                    <div className="col-md-9">
-                        <h5 className='bg-primary text-light text-center p-2'>Admin</h5>
-                        <Profile />
+            <section id="pricing" className="sp position-relative inline-style-054">
+                <div className="container-fluid my-3">
+                    <div className="row">
+                        <div className="col-md-3">
+                            <AdminSidebar />
+                        </div>
+                        <div className="col-md-9">
+                            <h5 className='bg-primary text-light text-center p-2'>Admin</h5>
+                            <Profile />
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </>
     )
 }

@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom'
 
 import TextValidators from '../../FormValidators/TextValidators'
 export default function SignupPage() {
-     let [showPassword, setShowPassword] = useState(false)
      let [data, setData] = useState({
           name: '',
           username: '',
@@ -62,8 +61,7 @@ export default function SignupPage() {
                })
           })
           response = await response.json()
-          console.log(response)
-          if (response.status === "Done")
+          if (response.result === "Done")
                navigate("/login")
           else {
                setErrorMessage({ ...errorMessage, ...response.reason })
